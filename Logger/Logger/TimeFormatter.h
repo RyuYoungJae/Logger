@@ -3,7 +3,7 @@
 class TimeFormatter
 {
 public:
-	std::string Format(const SYSTEMTIME& time)
+	static std::string Format(const SYSTEMTIME& time)
 	{
 		return "[" + std::to_string(time.wYear)
 			+ "-" + std::to_string(time.wMonth)

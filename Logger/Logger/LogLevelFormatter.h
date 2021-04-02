@@ -4,7 +4,7 @@
 class LogLevelFormatter
 {
 public:
-	std::string Format(const LogLevel& level)
+	static std::string Format(const LogLevel& level)
 	{
 		switch (level)
 		{

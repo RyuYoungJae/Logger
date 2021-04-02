@@ -4,6 +4,9 @@
 class Logger
 {
 public:
-	const std::string& Error(const std::string& log);
-};
+	Logger() = default;
+	virtual ~Logger() = default;
 
+public:
+	std::string Write(const SYSTEMTIME& logTime, const LogLevel& level, const std::string& log);
+};

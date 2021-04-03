@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DefineEnum.h" />
+    <ClInclude Include="LogFactor.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevelFormatter.h" />
     <ClInclude Include="TimeFormatter.h" />

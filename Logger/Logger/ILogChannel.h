@@ -7,5 +7,5 @@ public:
 	ILogChannel() = default;
 	virtual ~ILogChannel() = default;
 
-	virtual void Write(const LogLevel& level, const std::string& fmt) = 0;
+	virtual void Log(const LogLevel& level, const std::string& fmt) = 0;
 };

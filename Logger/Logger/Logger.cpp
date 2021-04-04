@@ -9,4 +9,3 @@ void Logger::RegisterChannel(std::unique_ptr<ILogChannel> channel)
 {
 	m_channel.emplace_back(std::move(channel));
 }
-

@@ -17,6 +17,7 @@ public:
 		AppendTime(result, logTime);
 		AppendLogLevel(result, level);
 		AppendParsingResult(result, log, value, args...);
+		result.append("\n");
 
 		return result;
 	}

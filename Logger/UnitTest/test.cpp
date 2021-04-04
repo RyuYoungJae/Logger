@@ -8,6 +8,8 @@
 #include "../Logger/LogLevelFormatter.h"
 #include "../Logger/Formatter.cpp"
 #include "../Logger/FactorParsing.h"
+#include "../Logger/Logger.cpp"
+#include "../Logger/ConsoleChannel.cpp"
 
 TEST(TimeFormatter, Format_ConvertString_Equal)
 {

@@ -1,8 +1,14 @@
 #pragma once
-class ConsoleChannel
+#include "ILogChannel.h"
+
+enum class LogLevel;
+class ConsoleChannel : public ILogChannel
 {
 public:
-	ConsoleChannel();
-	~ConsoleChannel();
+	ConsoleChannel() = default;
+	virtual ~ConsoleChannel() = default;
+
+public:
+	void Write(const LogLevel& level, const std::string& fmt) override;
 };
 

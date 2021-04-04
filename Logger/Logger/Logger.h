@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 #include <windows.h>
-#include "DefineEnum.h"
-#include "Formatter.h"
 
+enum class LogLevel;
+class Formatter;
 class ILogChannel;
 class Logger
 {
@@ -16,14 +16,20 @@ public:
 	Logger();
 	virtual ~Logger() = default;
 
+	void RegisterChannel(std::unique_ptr<ILogChannel> channel);
+
 public:
 	template<typename T, typename ...Arg>
 	std::string Write(const SYSTEMTIME& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
 	{
-		/*auto fmt = m_formatter->Format(logTime, level, log, value, args...);
-		m_channel->Write(level, fmt);
-
-		return fmt;*/
+		auto fmt = m_formatter->Format(logTime, level, log, value, args...);
+		
+		for (const auto& channel : m_channel)
+		{
+			channel->Write(level, fmt);
+		}
+		
+		return fmt;
 	}
 
 	template<typename T, typename ...Arg>

@@ -1,8 +1,8 @@
 #pragma once
 #include "FactorParsing.h"
-#include "DefineEnum.h"
 #include <windows.h>
 
+enum class LogLevel;
 class Formatter
 {
 public:

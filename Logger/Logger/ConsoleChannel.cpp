@@ -1,12 +1,8 @@
+#include "DefineEnum.h"
 #include "ConsoleChannel.h"
+#include <iostream>
 
-
-
-ConsoleChannel::ConsoleChannel()
+void ConsoleChannel::Write(const LogLevel& level, const std::string& fmt)
 {
-}
-
-
-ConsoleChannel::~ConsoleChannel()
-{
+	std::cout << fmt;
 }

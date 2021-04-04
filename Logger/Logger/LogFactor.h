@@ -12,7 +12,10 @@ public:
 	template<typename T>
 	LogFactor(const T& value)
 	{
-		m_value = std::to_string(value);
+		std::stringstream stream;
+		stream << value;
+
+		m_value = stream.str();
 	}
 
 	const std::string& GetFactor() { return m_value; };

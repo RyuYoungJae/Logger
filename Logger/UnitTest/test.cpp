@@ -7,6 +7,7 @@
 #include "../Logger/TimeFormatter.h"
 #include "../Logger/LogLevelFormatter.h"
 #include "../Logger/Logger.cpp"
+#include "../Logger/FactorParsing.h"
 
 TEST(TimeFormatter, Format_ConvertString_Equal)
 {
@@ -54,4 +55,12 @@ TEST(Logger, Write_WriteErrorLog_Equal)
 	expect.append(word);
 
 	EXPECT_EQ(result, expect);
+}
+
+TEST(FactorParsing, Parsing_RightPosition_Equal)
+{
+	auto parsing = std::make_unique<FactorParsing>();
+	const auto result = parsing->Parsing("test cod : [%,%]", 3, "kkk");
+
+	EXPECT_EQ(result, "test cod : [3,kkk]");
 }

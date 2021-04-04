@@ -6,7 +6,7 @@
 #include "../Logger/DefineEnum.h"
 #include "../Logger/TimeFormatter.h"
 #include "../Logger/LogLevelFormatter.h"
-#include "../Logger/Logger.cpp"
+#include "../Logger/Formatter.cpp"
 #include "../Logger/FactorParsing.h"
 
 TEST(TimeFormatter, Format_ConvertString_Equal)
@@ -35,14 +35,22 @@ TEST(LogLevelFormatter, Format_ConvertLevelMark_Equal)
 	EXPECT_TRUE(InfoMark == "[I]" && ErrorMark == "[E]");
 }
 
-TEST(Logger, Write_WriteErrorLog_Equal)
+TEST(FactorParsing, Parsing_RightPosition_Equal)
 {
-	auto logger = std::make_unique<Logger>();
+	auto parsing = std::make_unique<FactorParsing>();
+	const auto result = parsing->Parsing("test code : [%,%]", 3, "kkk");
+
+	EXPECT_EQ(result, "test code : [3,kkk]");
+}
+
+TEST(Formatter, Format_Call_Equal)
+{
+	auto formatter = std::make_unique<Formatter>();
 
 	SYSTEMTIME time;
 	GetLocalTime(&time);
 
-	const auto result = logger->Write(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
+	const auto result = formatter->Format(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
 
 	auto expect = "[" + std::to_string(time.wYear)
 		+ "-" + std::to_string(time.wMonth)
@@ -54,13 +62,5 @@ TEST(Logger, Write_WriteErrorLog_Equal)
 	expect.append(LogLevelFormatter::Format(LogLevel::Error));
 	expect.append("test1 code [kk][end]");
 
-	EXPECT_EQ(result, expect); 
-}
-
-TEST(FactorParsing, Parsing_RightPosition_Equal)
-{
-	auto parsing = std::make_unique<FactorParsing>();
-	const auto result = parsing->Parsing("test code : [%,%]", 3, "kkk");
-
-	EXPECT_EQ(result, "test code : [3,kkk]");
+	EXPECT_EQ(result, expect);
 }

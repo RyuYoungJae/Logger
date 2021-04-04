@@ -1,57 +1,40 @@
 #pragma once
 #include <string>
-#include "FactorParsing.h"
+#include <vector>
+#include <windows.h>
+#include "DefineEnum.h"
+#include "Formatter.h"
 
+class ILogChannel;
 class Logger
 {
+private:
+	std::unique_ptr<Formatter> m_formatter;
+	std::vector< std::unique_ptr<ILogChannel>> m_channel;
+
 public:
-	Logger() = default;
+	Logger();
 	virtual ~Logger() = default;
 
 public:
 	template<typename T, typename ...Arg>
 	std::string Write(const SYSTEMTIME& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
 	{
-		std::string result{};
-		AppendTime(result, logTime);
-		AppendLogLevel(result, level);
-		AppendParsingResult(result, log, value, args...);
+		/*auto fmt = m_formatter->Format(logTime, level, log, value, args...);
+		m_channel->Write(level, fmt);
 
-		return result;
+		return fmt;*/
 	}
 
 	template<typename T, typename ...Arg>
 	std::string Info(const SYSTEMTIME& logTime, const std::string& log, T value, Arg...args)
 	{
-		std::string result{};
-		AppendTime(result, logTime);
-		AppendLogLevel(result, LogLevel::Info);
-		AppendParsingResult(result, log, value, args...);
-
-		return result;
+		return Write(logTime, LogLevel::Info, log, value, args...);
 	}
 
 	template<typename T, typename ...Arg>
 	std::string Error(const SYSTEMTIME& logTime, const std::string& log, T value, Arg...args)
 	{
-		std::string result{};
-		AppendTime(result, logTime);
-		AppendLogLevel(result, LogLevel::Error);
-		AppendParsingResult(result, log, value, args...);
-
-		return result;
-	}
-
-private:
-	void AppendTime(std::string& target, const SYSTEMTIME& logTime);
-	void AppendLogLevel(std::string& target, const LogLevel& level);
-
-private:
-	template<typename T, typename ...Arg>
-	void AppendParsingResult(std::string& result, const std::string& log, T value, Arg...arg)
-	{
-		FactorParsing parsing{};
-		auto parsingResult = parsing.Parsing(log, value, arg...);
-		result.append(parsingResult);
+		return Write(logTime, LogLevel::Error, log, value, args...);
 	}
 };

@@ -115,12 +115,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleChannel.cpp" />
+    <ClCompile Include="Formatter.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleChannel.h" />
     <ClInclude Include="DefineEnum.h" />
     <ClInclude Include="FactorParsing.h" />
+    <ClInclude Include="Formatter.h" />
+    <ClInclude Include="ILogChannel.h" />
     <ClInclude Include="LogFactor.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevelFormatter.h" />

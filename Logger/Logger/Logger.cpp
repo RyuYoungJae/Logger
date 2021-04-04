@@ -1,14 +1,8 @@
-#include <Windows.h>
-#include "TimeFormatter.h"
-#include "LogLevelFormatter.h"
+#include "Formatter.h"
+#include "ILogChannel.h"
 #include "Logger.h"
 
-void Logger::AppendTime(std::string& target, const SYSTEMTIME& logTime)
-{
-	target.append(TimeFormatter::Format(logTime));
-}
+Logger::Logger() : m_formatter{std::make_unique<Formatter>()}
+{}
 
-void Logger::AppendLogLevel(std::string& target, const LogLevel& level)
-{
-	target.append(LogLevelFormatter::Format(level));
-}
+

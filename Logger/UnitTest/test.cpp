@@ -54,7 +54,7 @@ TEST(Logger, Write_WriteErrorLog_Equal)
 	expect.append(LogLevelFormatter::Format(LogLevel::Error));
 	expect.append("test1 code [kk][end]");
 
-	EXPECT_EQ(result, expect);
+	EXPECT_EQ(result, expect); 
 }
 
 TEST(FactorParsing, Parsing_RightPosition_Equal)

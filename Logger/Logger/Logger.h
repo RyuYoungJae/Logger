@@ -20,6 +20,28 @@ public:
 		return result;
 	}
 
+	template<typename T, typename ...Arg>
+	std::string Info(const SYSTEMTIME& logTime, const std::string& log, T value, Arg...args)
+	{
+		std::string result{};
+		AppendTime(result, logTime);
+		AppendLogLevel(result, LogLevel::Info);
+		AppendParsingResult(result, log, value, args...);
+
+		return result;
+	}
+
+	template<typename T, typename ...Arg>
+	std::string Error(const SYSTEMTIME& logTime, const std::string& log, T value, Arg...args)
+	{
+		std::string result{};
+		AppendTime(result, logTime);
+		AppendLogLevel(result, LogLevel::Error);
+		AppendParsingResult(result, log, value, args...);
+
+		return result;
+	}
+
 private:
 	void AppendTime(std::string& target, const SYSTEMTIME& logTime);
 	void AppendLogLevel(std::string& target, const LogLevel& level);

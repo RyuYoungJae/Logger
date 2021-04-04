@@ -3,13 +3,12 @@
 #include "LogLevelFormatter.h"
 #include "Logger.h"
 
-std::string Logger::Write(const SYSTEMTIME& logTime, const LogLevel& level, const std::string& log)
+void Logger::AppendTime(std::string& target, const SYSTEMTIME& logTime)
 {
-	std::string result{};
+	target.append(TimeFormatter::Format(logTime));
+}
 
-	result.append(TimeFormatter::Format(logTime));
-	result.append(LogLevelFormatter::Format(level));
-	result.append(log);
-
-	return result;
+void Logger::AppendLogLevel(std::string& target, const LogLevel& level)
+{
+	target.append(LogLevelFormatter::Format(level));
 }

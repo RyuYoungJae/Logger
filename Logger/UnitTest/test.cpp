@@ -41,8 +41,8 @@ TEST(Logger, Write_WriteErrorLog_Equal)
 
 	SYSTEMTIME time;
 	GetLocalTime(&time);
-	const auto word = "test code";
-	const auto result = logger->Write(time, LogLevel::Error, word);
+
+	const auto result = logger->Write(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
 
 	auto expect = "[" + std::to_string(time.wYear)
 		+ "-" + std::to_string(time.wMonth)
@@ -52,7 +52,7 @@ TEST(Logger, Write_WriteErrorLog_Equal)
 		+ ":" + std::to_string(time.wSecond)
 		+ "." + std::to_string(time.wMilliseconds) + "]";
 	expect.append(LogLevelFormatter::Format(LogLevel::Error));
-	expect.append(word);
+	expect.append("test1 code [kk][end]");
 
 	EXPECT_EQ(result, expect);
 }
@@ -60,7 +60,7 @@ TEST(Logger, Write_WriteErrorLog_Equal)
 TEST(FactorParsing, Parsing_RightPosition_Equal)
 {
 	auto parsing = std::make_unique<FactorParsing>();
-	const auto result = parsing->Parsing("test cod : [%,%]", 3, "kkk");
+	const auto result = parsing->Parsing("test code : [%,%]", 3, "kkk");
 
-	EXPECT_EQ(result, "test cod : [3,kkk]");
+	EXPECT_EQ(result, "test code : [3,kkk]");
 }

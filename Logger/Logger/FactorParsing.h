@@ -20,7 +20,7 @@ public:
 		return Parsing(str, args...);
 	}
 
-	template<typename T, typename ...Arg>
+	template<typename T>
 	std::string Parsing(const std::string& str, T value)
 	{
 		m_factors.emplace_back(std::make_unique<LogFactor>(value));

@@ -19,7 +19,7 @@ void ConsoleChannel::Log(const LogLevel& level, const std::string& fmt)
 	ChangeColor(level);
 
 	DWORD written = 0;
-	WriteConsoleA(m_handle, fmt.c_str(), fmt.length(), &written, nullptr);
+	WriteConsoleA(m_handle, fmt.c_str(), static_cast<DWORD>(fmt.length()), &written, nullptr);
 }
 
 void ConsoleChannel::ChangeColor(const LogLevel& level)

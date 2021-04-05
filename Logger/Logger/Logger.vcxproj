@@ -119,7 +119,6 @@
     <ClCompile Include="Formatter.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="StringUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleChannel.h" />
@@ -130,7 +129,6 @@
     <ClInclude Include="LogFactor.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevelFormatter.h" />
-    <ClInclude Include="StringUtil.h" />
     <ClInclude Include="TimeFormatter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

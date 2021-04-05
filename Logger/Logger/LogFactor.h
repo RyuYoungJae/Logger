@@ -19,5 +19,7 @@ public:
 		m_value = stream.str();
 	}
 
+	virtual ~LogFactor() = default;
+
 	const std::string& GetFactor() { return m_value; };
 };

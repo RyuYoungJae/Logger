@@ -2,7 +2,8 @@
 #include <memory>
 #include <time.h>
 #include <regex>
-#include <Windows.h>
+#include "../Logger/TimeUtil.cpp"
+#include "../Logger/LDateTime.h"
 #include "../Logger/DefineEnum.h"
 #include "../Logger/TimeFormatter.h"
 #include "../Logger/LogLevelFormatter.h"
@@ -11,20 +12,26 @@
 #include "../Logger/Logger.cpp"
 #include "../Logger/ConsoleChannel.cpp"
 
+/********************************************
+TODO:
+1. 로그 레벨은 INFO, ERROR가 존재, [I],[E]로 표기
+2. INFO는 하얀색, Error는 빨간색으로 윈도우 콘솔에 나타나야한다.
+3. 로그 양식은 [로그 남은 날짜][로그 레벨][내용]
+4. % 값을 기준으로 인자를 대입 하여야한다.
+*********************************************/
+
 TEST(TimeFormatter, Format_ConvertString_Equal)
 {
-	SYSTEMTIME time;
-	GetLocalTime(&time);
-
+	auto time = TimeUtil::GetLocalDate();
 	auto result = TimeFormatter::Format(time);
 	
-	auto expect = "[" + std::to_string(time.wYear)
-					+ "-" + std::to_string(time.wMonth)
-					+ "-" + std::to_string(time.wDay)
-					+ " " + std::to_string(time.wHour)
-					+ ":" + std::to_string(time.wMinute)
-					+ ":" + std::to_string(time.wSecond)
-					+ "." + std::to_string(time.wMilliseconds) + "]";
+	auto expect = "[" + std::to_string(time.Year)
+					+ "-" + std::to_string(time.Month)
+					+ "-" + std::to_string(time.Day)
+					+ " " + std::to_string(time.Hour)
+					+ ":" + std::to_string(time.Minute)
+					+ ":" + std::to_string(time.Second)
+					+ "." + std::to_string(time.Milliseconds) + "]";
 
 	EXPECT_EQ(result, expect);
 }
@@ -49,20 +56,19 @@ TEST(Formatter, Format_Call_Equal)
 {
 	auto formatter = std::make_unique<Formatter>();
 
-	SYSTEMTIME time;
-	GetLocalTime(&time);
+	auto time = TimeUtil::GetLocalDate();
 
 	const auto result = formatter->Format(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
 
-	auto expect = "[" + std::to_string(time.wYear)
-		+ "-" + std::to_string(time.wMonth)
-		+ "-" + std::to_string(time.wDay)
-		+ " " + std::to_string(time.wHour)
-		+ ":" + std::to_string(time.wMinute)
-		+ ":" + std::to_string(time.wSecond)
-		+ "." + std::to_string(time.wMilliseconds) + "]";
+	auto expect = "[" + std::to_string(time.Year)
+		+ "-" + std::to_string(time.Month)
+		+ "-" + std::to_string(time.Day)
+		+ " " + std::to_string(time.Hour)
+		+ ":" + std::to_string(time.Minute)
+		+ ":" + std::to_string(time.Second)
+		+ "." + std::to_string(time.Milliseconds) + "]";
 	expect.append(LogLevelFormatter::Format(LogLevel::Error));
-	expect.append("test1 code [kk][end]");
+	expect.append("test1 code [kk][end]\n");
 
 	EXPECT_EQ(result, expect);
 }

@@ -1,19 +1,19 @@
 #pragma once
 #include <string>
-#include <windows.h>
+#include "LDateTime.h"
 
 class TimeFormatter
 {
 public:
-	static std::string Format(const SYSTEMTIME& time)
+	static std::string Format(const LDateTime& time)
 	{
-		return "[" + std::to_string(time.wYear)
-			+ "-" + std::to_string(time.wMonth)
-			+ "-" + std::to_string(time.wDay)
-			+ " " + std::to_string(time.wHour)
-			+ ":" + std::to_string(time.wMinute)
-			+ ":" + std::to_string(time.wSecond)
-			+ "." + std::to_string(time.wMilliseconds) + "]";
+		return "[" + std::to_string(time.Year)
+			+ "-" + std::to_string(time.Month)
+			+ "-" + std::to_string(time.Day)
+			+ " " + std::to_string(time.Hour)
+			+ ":" + std::to_string(time.Minute)
+			+ ":" + std::to_string(time.Second)
+			+ "." + std::to_string(time.Milliseconds) + "]";
 	}
 };
 

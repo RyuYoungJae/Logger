@@ -21,7 +21,7 @@ public:
 
 public:
 	template<typename T, typename ...Arg>
-	std::string Log(const SYSTEMTIME& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
+	std::string Log(const LDateTime& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
 	{
 		if (m_channel.empty()) throw std::runtime_error("not exist channel");
 		auto fmt = m_formatter->Format(logTime, level, log, value, args...);
@@ -35,13 +35,13 @@ public:
 	}
 
 	template<typename T, typename ...Arg>
-	std::string Info(const SYSTEMTIME& logTime, const std::string& log, T value, Arg...args)
+	std::string Info(const LDateTime& logTime, const std::string& log, T value, Arg...args)
 	{
 		return Log(logTime, LogLevel::Info, log, value, args...);
 	}
 
 	template<typename T, typename ...Arg>
-	std::string Error(const SYSTEMTIME& logTime, const std::string& log, T value, Arg...args)
+	std::string Error(const LDateTime& logTime, const std::string& log, T value, Arg...args)
 	{
 		return Log(logTime, LogLevel::Error, log, value, args...);
 	}

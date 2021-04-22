@@ -1,6 +1,6 @@
 #pragma once
 #include "FactorParsing.h"
-#include <windows.h>
+#include "LDateTime.h"
 
 enum class LogLevel;
 class Formatter
@@ -11,7 +11,7 @@ public:
 
 public:
 	template<typename T, typename ...Arg>
-	std::string Format(const SYSTEMTIME& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
+	std::string Format(const LDateTime& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
 	{
 		std::string result{};
 		AppendTime(result, logTime);
@@ -23,7 +23,7 @@ public:
 	}
 
 private:
-	void AppendTime(std::string& target, const SYSTEMTIME& logTime);
+	void AppendTime(std::string& target, const LDateTime& logTime);
 	void AppendLogLevel(std::string& target, const LogLevel& level);
 
 private:

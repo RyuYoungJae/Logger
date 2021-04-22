@@ -1,8 +1,9 @@
 #include "TimeFormatter.h"
 #include "LogLevelFormatter.h"
+#include "LDateTime.h"
 #include "Formatter.h"
 
-void Formatter::AppendTime(std::string& target, const SYSTEMTIME& logTime)
+void Formatter::AppendTime(std::string& target, const LDateTime& logTime)
 {
 	target.append(TimeFormatter::Format(logTime));
 }

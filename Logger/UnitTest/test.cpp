@@ -22,16 +22,16 @@ TODO:
 
 TEST(TimeFormatter, Format_ConvertString_Equal)
 {
-	auto time = TimeUtil::GetLocalDate();
-	auto result = TimeFormatter::Format(time);
-	
-	auto expect = "[" + std::to_string(time.Year)
-					+ "-" + std::to_string(time.Month)
-					+ "-" + std::to_string(time.Day)
-					+ " " + std::to_string(time.Hour)
-					+ ":" + std::to_string(time.Minute)
-					+ ":" + std::to_string(time.Second)
-					+ "." + std::to_string(time.Milliseconds) + "]";
+	LDateTime time{};
+	time.Year = 2021;
+	time.Month = 4;
+	time.Day = 22;
+	time.Hour = 19;
+	time.Minute = 22;
+	time.Second = 0;
+
+	auto result = TimeFormatter::Format(time);	
+	auto expect = "[2021-04-22 19:22:00.000]";
 
 	EXPECT_EQ(result, expect);
 }
@@ -56,17 +56,17 @@ TEST(Formatter, Format_Call_Equal)
 {
 	auto formatter = std::make_unique<Formatter>();
 
-	auto time = TimeUtil::GetLocalDate();
+	LDateTime time{};
+	time.Year = 2021;
+	time.Month = 4;
+	time.Day = 22;
+	time.Hour = 19;
+	time.Minute = 22;
+	time.Second = 0;
 
 	const auto result = formatter->Format(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
 
-	auto expect = "[" + std::to_string(time.Year)
-		+ "-" + std::to_string(time.Month)
-		+ "-" + std::to_string(time.Day)
-		+ " " + std::to_string(time.Hour)
-		+ ":" + std::to_string(time.Minute)
-		+ ":" + std::to_string(time.Second)
-		+ "." + std::to_string(time.Milliseconds) + "]";
+	std::string expect = "[2021-04-22 19:22:00.000]";
 	expect.append(LogLevelFormatter::Format(LogLevel::Error));
 	expect.append("test1 code [kk][end]\n");
 

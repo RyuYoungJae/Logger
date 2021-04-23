@@ -13,57 +13,90 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\ForamtData">
+      <UniqueIdentifier>{5390b66e-20b2-4e83-815f-534581ba571a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Channel">
+      <UniqueIdentifier>{b6e493ca-5081-4a59-abd6-0ade0e94738a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Formatter">
+      <UniqueIdentifier>{b3fd4c9d-bb67-45dc-9025-eebf183006db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Logger">
+      <UniqueIdentifier>{ccbe4c54-dd18-43da-9f16-3de58028bbed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\LogFactor">
+      <UniqueIdentifier>{1cf8e7bc-dacb-4ee1-884a-55dce650ddb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Logger.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Formatter.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsoleChannel.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="TimeUtil.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ConsoleChannel.cpp">
+      <Filter>소스 파일\Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeFormatter.cpp">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>소스 파일\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="LogCombiner.cpp">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClCompile>
+    <ClCompile Include="LogLevelFormatter.cpp">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClCompile>
+    <ClCompile Include="LogContentFormatter.cpp">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Logger.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeFormatter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="LogLevelFormatter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="DefineEnum.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="LogFactor.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="FactorParsing.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Formatter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ILogChannel.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ConsoleChannel.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="LDateTime.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="TimeUtil.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFormatData.h">
+      <Filter>소스 파일\ForamtData</Filter>
+    </ClInclude>
+    <ClInclude Include="LDateTime.h">
+      <Filter>소스 파일\ForamtData</Filter>
+    </ClInclude>
+    <ClInclude Include="ILogChannel.h">
+      <Filter>소스 파일\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleChannel.h">
+      <Filter>소스 파일\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeFormatter.h">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClInclude>
+    <ClInclude Include="LogLevelFormatter.h">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClInclude>
+    <ClInclude Include="IFormatter.h">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>소스 파일\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="LogCombiner.h">
+      <Filter>소스 파일\Formatter</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFactorConverter.h">
+      <Filter>소스 파일\LogFactor</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFactor.h">
+      <Filter>소스 파일\LogFactor</Filter>
+    </ClInclude>
+    <ClInclude Include="LogContentFormatter.h">
+      <Filter>소스 파일\Formatter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

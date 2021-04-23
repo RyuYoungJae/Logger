@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+enum class LogLevel;
 class ILogChannel
 {
 public:

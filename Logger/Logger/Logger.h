@@ -1,16 +1,17 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <windows.h>
 #include <stdexcept>
-#include "Formatter.h"
-#include "DefineEnum.h"
 #include "ILogChannel.h"
+#include "LogCombiner.h"
+//#include "IFormatter.h"
+#include "DefineEnum.h"
 
+class IFormatter;
 class Logger
 {
 private:
-	std::unique_ptr<Formatter> m_formatter;
+	std::unique_ptr<LogCombiner> m_combiner;
 	std::vector< std::unique_ptr<ILogChannel>> m_channel;
 
 public:
@@ -18,13 +19,14 @@ public:
 	virtual ~Logger() = default;
 
 	void RegisterChannel(std::unique_ptr<ILogChannel> channel);
+	void RegisterFormatter(std::unique_ptr<IFormatter> formatter);
 
 public:
 	template<typename T, typename ...Arg>
 	std::string Log(const LDateTime& logTime, const LogLevel& level, const std::string& log, T value, Arg...args)
 	{
 		if (m_channel.empty()) throw std::runtime_error("not exist channel");
-		auto fmt = m_formatter->Format(logTime, level, log, value, args...);
+		auto fmt = m_combiner->Format(logTime, level, log, value, args...);
 		
 		for (const auto& channel : m_channel)
 		{

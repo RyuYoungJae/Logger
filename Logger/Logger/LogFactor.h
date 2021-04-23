@@ -21,5 +21,5 @@ public:
 
 	virtual ~LogFactor() = default;
 
-	const std::string& GetFactor() { return m_value; };
+	const std::string& GetFactor() const { return m_value; };
 };

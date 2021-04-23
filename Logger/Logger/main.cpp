@@ -3,10 +3,16 @@
 #include "ConsoleChannel.h"
 #include "TimeUtil.h"
 #include "LDateTime.h"
+#include "TimeFormatter.h"
+#include "LogLevelFormatter.h"
+#include "LogContentFormatter.h"
 
 int main()
 {
 	auto logger = std::make_unique<Logger>();
+	logger->RegisterFormatter(std::make_unique<TimeFormatter>());
+	logger->RegisterFormatter(std::make_unique<LogLevelFormatter>());
+	logger->RegisterFormatter(std::make_unique<LogContentFormatter>());
 	logger->RegisterChannel(std::make_unique<ConsoleChannel>());
 	try
 	{

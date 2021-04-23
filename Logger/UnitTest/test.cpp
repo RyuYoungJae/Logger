@@ -3,14 +3,12 @@
 #include <time.h>
 #include <regex>
 #include "../Logger/TimeUtil.cpp"
-#include "../Logger/LDateTime.h"
 #include "../Logger/DefineEnum.h"
-#include "../Logger/TimeFormatter.h"
-#include "../Logger/LogLevelFormatter.h"
-#include "../Logger/Formatter.cpp"
-#include "../Logger/FactorParsing.h"
-#include "../Logger/Logger.cpp"
-#include "../Logger/ConsoleChannel.cpp"
+#include "../Logger/TimeFormatter.cpp"
+#include "../Logger/LogLevelFormatter.cpp"
+#include "../Logger/LogCombiner.cpp"
+#include "../Logger/LogFormatData.h"
+#include "../Logger/LogContentFormatter.cpp"
 
 /********************************************
 TODO:
@@ -20,42 +18,53 @@ TODO:
 4. % 값을 기준으로 인자를 대입 하여야한다.
 *********************************************/
 
-TEST(TimeFormatter, Format_ConvertString_Equal)
+TEST(TimeFormatter, Format_ConvertLogFormat_Equal)
 {
-	LDateTime time{};
-	time.Year = 2021;
-	time.Month = 4;
-	time.Day = 22;
-	time.Hour = 19;
-	time.Minute = 22;
-	time.Second = 0;
+	LogFormatData data{};
+	data.Time.Year = 2021;
+	data.Time.Month = 4;
+	data.Time.Day = 22;
+	data.Time.Hour = 19;
+	data.Time.Minute = 22;
+	data.Time.Second = 0;
 
-	auto result = TimeFormatter::Format(time);	
+	auto formatter = std::make_unique<TimeFormatter>();
+	auto result = formatter->Format(data);
 	auto expect = "[2021-04-22 19:22:00.000]";
 
 	EXPECT_EQ(result, expect);
 }
 
-TEST(LogLevelFormatter, Format_ConvertLevelMark_Equal)
+TEST(LogLevelFormatter, Format_ConvertLogFormat_Equal)
 {
-	auto InfoMark = LogLevelFormatter::Format(LogLevel::Info);
-	auto ErrorMark = LogLevelFormatter::Format(LogLevel::Error);
+	LogFormatData infoData{};
+	infoData.Level = LogLevel::Info;
+	auto infoFormatter = std::make_unique<LogLevelFormatter>();
+	auto InfoMark = infoFormatter->Format(infoData);
 
+	LogFormatData errorData{};
+	errorData.Level = LogLevel::Error;
+	auto errorFormatter = std::make_unique<LogLevelFormatter>();
+	auto ErrorMark = errorFormatter->Format(errorData);
+	
 	EXPECT_TRUE(InfoMark == "[I]" && ErrorMark == "[E]");
 }
 
-TEST(FactorParsing, Parsing_RightPosition_Equal)
+TEST(LogContentFormatter, Format_ConvertLogFormat_Equal)
 {
-	auto parsing = std::make_unique<FactorParsing>();
-	const auto result = parsing->Parsing("test code : [%,%]", 3, "kkk");
+	LogFormatData data{};
+	data.Content.str = "test code : [%,%]";
+	data.Content.factors.emplace_back(3);
+	data.Content.factors.emplace_back("kkk");
+
+	auto formatter = std::make_unique<LogContentFormatter>();
+	auto result = formatter->Format(data);
 
 	EXPECT_EQ(result, "test code : [3,kkk]");
 }
 
-TEST(Formatter, Format_Call_Equal)
+TEST(LogCombiner, Format_ConvertLogFormat_Equal)
 {
-	auto formatter = std::make_unique<Formatter>();
-
 	LDateTime time{};
 	time.Year = 2021;
 	time.Month = 4;
@@ -63,12 +72,15 @@ TEST(Formatter, Format_Call_Equal)
 	time.Hour = 19;
 	time.Minute = 22;
 	time.Second = 0;
+	
+	auto combiner = std::make_unique<LogCombiner>();
+	combiner->Register(std::make_unique<TimeFormatter>());
+	combiner->Register(std::make_unique<LogLevelFormatter>());
+	combiner->Register(std::make_unique<LogContentFormatter>());
 
-	const auto result = formatter->Format(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
+	const auto result = combiner->Format(time, LogLevel::Error, "test% code [%][%]", 1, "kk", "end");
 
-	std::string expect = "[2021-04-22 19:22:00.000]";
-	expect.append(LogLevelFormatter::Format(LogLevel::Error));
-	expect.append("test1 code [kk][end]\n");
+	std::string expect = "[2021-04-22 19:22:00.000][E]test1 code [kk][end]\n";
 
 	EXPECT_EQ(result, expect);
 }

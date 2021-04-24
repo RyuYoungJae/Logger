@@ -28,6 +28,15 @@
     <Filter Include="소스 파일\LogFactor">
       <UniqueIdentifier>{1cf8e7bc-dacb-4ee1-884a-55dce650ddb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Channel\Console">
+      <UniqueIdentifier>{68e2043b-cca9-4251-8e1f-c233017fcc74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Channel\File">
+      <UniqueIdentifier>{19bb74a2-e4b9-4f7f-9868-a3ce72901811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Channel\File\RotateStrategy">
+      <UniqueIdentifier>{8abb8268-d354-447f-a9fb-7512a9dfa383}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,9 +44,6 @@
     </ClCompile>
     <ClCompile Include="TimeUtil.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsoleChannel.cpp">
-      <Filter>소스 파일\Channel</Filter>
     </ClCompile>
     <ClCompile Include="TimeFormatter.cpp">
       <Filter>소스 파일\Formatter</Filter>
@@ -54,6 +60,18 @@
     <ClCompile Include="LogContentFormatter.cpp">
       <Filter>소스 파일\Formatter</Filter>
     </ClCompile>
+    <ClCompile Include="ConsoleChannel.cpp">
+      <Filter>소스 파일\Channel\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="FileChannel.cpp">
+      <Filter>소스 파일\Channel\File</Filter>
+    </ClCompile>
+    <ClCompile Include="LogFile.cpp">
+      <Filter>소스 파일\Channel\File</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSizeStrategy.cpp">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DefineEnum.h">
@@ -69,9 +87,6 @@
       <Filter>소스 파일\ForamtData</Filter>
     </ClInclude>
     <ClInclude Include="ILogChannel.h">
-      <Filter>소스 파일\Channel</Filter>
-    </ClInclude>
-    <ClInclude Include="ConsoleChannel.h">
       <Filter>소스 파일\Channel</Filter>
     </ClInclude>
     <ClInclude Include="TimeFormatter.h">
@@ -97,6 +112,24 @@
     </ClInclude>
     <ClInclude Include="LogContentFormatter.h">
       <Filter>소스 파일\Formatter</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleChannel.h">
+      <Filter>소스 파일\Channel\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="FileChannel.h">
+      <Filter>소스 파일\Channel\File</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFile.h">
+      <Filter>소스 파일\Channel\File</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSizeStrategy.h">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="IRotateStrategy.h">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateData.h">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

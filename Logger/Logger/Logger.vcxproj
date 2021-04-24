@@ -117,8 +117,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleChannel.cpp" />
+    <ClCompile Include="FileChannel.cpp" />
+    <ClCompile Include="FileSizeStrategy.cpp" />
     <ClCompile Include="LogCombiner.cpp" />
     <ClCompile Include="LogContentFormatter.cpp" />
+    <ClCompile Include="LogFile.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="LogLevelFormatter.cpp" />
     <ClCompile Include="main.cpp" />
@@ -128,15 +131,20 @@
   <ItemGroup>
     <ClInclude Include="ConsoleChannel.h" />
     <ClInclude Include="DefineEnum.h" />
+    <ClInclude Include="FileChannel.h" />
+    <ClInclude Include="IRotateStrategy.h" />
     <ClInclude Include="LogCombiner.h" />
     <ClInclude Include="IFormatter.h" />
     <ClInclude Include="ILogChannel.h" />
     <ClInclude Include="LogContentFormatter.h" />
     <ClInclude Include="LogFactorConverter.h" />
+    <ClInclude Include="LogFile.h" />
     <ClInclude Include="LogFormatData.h" />
     <ClInclude Include="LogFactor.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevelFormatter.h" />
+    <ClInclude Include="FileSizeStrategy.h" />
+    <ClInclude Include="RotateData.h" />
     <ClInclude Include="TimeFormatter.h" />
     <ClInclude Include="LDateTime.h" />
     <ClInclude Include="TimeUtil.h" />

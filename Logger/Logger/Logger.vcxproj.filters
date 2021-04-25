@@ -72,6 +72,12 @@
     <ClCompile Include="FileSizeStrategy.cpp">
       <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
     </ClCompile>
+    <ClCompile Include="LogArchive.cpp">
+      <Filter>소스 파일\Channel\File</Filter>
+    </ClCompile>
+    <ClCompile Include="FilePathMaker.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DefineEnum.h">
@@ -130,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="RotateData.h">
       <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="LogArchive.h">
+      <Filter>소스 파일\Channel\File</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePathMaker.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

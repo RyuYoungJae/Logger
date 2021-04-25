@@ -9,6 +9,8 @@
 #include "../Logger/LogCombiner.cpp"
 #include "../Logger/LogFormatData.h"
 #include "../Logger/LogContentFormatter.cpp"
+#include "../Logger/LogFile.cpp"
+#include "../Logger/LogArchive.cpp"
 
 /********************************************
 TODO:

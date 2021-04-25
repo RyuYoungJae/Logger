@@ -1,3 +1,4 @@
+#include <fstream>
 #include "LogFile.h"
 
 LogFile::LogFile(const std::string& path) : m_file{ INVALID_HANDLE_VALUE }, m_path{ path }
@@ -14,7 +15,7 @@ void LogFile::Write(const std::string& fmt)
 	if (m_file == INVALID_HANDLE_VALUE) CreateLogFile();
 
 	DWORD bytesWritten = 0;
-	if (!WriteFile(m_file, fmt.c_str(), fmt.length(), &bytesWritten, NULL)) throw std::runtime_error("Exception from file write \n");
+	if (!WriteFile(m_file, fmt.c_str(), static_cast<DWORD>(fmt.length()), &bytesWritten, NULL)) throw std::runtime_error("Exception from file write \n");
 
 	if (!FlushFileBuffers(m_file)) throw std::runtime_error("Exception from file flush \n");
 }
@@ -24,7 +25,13 @@ int LogFile::GetSize()
 	LARGE_INTEGER size{};
 	GetFileSizeEx(m_file, &size);
 
-	return size.QuadPart;
+	return static_cast<int>(size.QuadPart);
+}
+
+bool LogFile::IsExist()
+{
+	std::ifstream fs(m_path);
+	return fs.good();
 }
 
 void LogFile::CreateLogFile()
@@ -53,4 +60,23 @@ bool LogFile::IsExistDirectories()
 
 	return (attrib != INVALID_FILE_ATTRIBUTES &&
 		(attrib & FILE_ATTRIBUTE_DIRECTORY));
+}
+
+void LogFile::Close()
+{
+	if (m_file == INVALID_HANDLE_VALUE) return;
+
+	FlushFileBuffers(m_file);
+	CloseHandle(m_file);
+	m_file = INVALID_HANDLE_VALUE;
+}
+
+const std::string& LogFile::GetFilePath()
+{
+	return m_path;
+}
+
+void LogFile::ChangeFilePath(const std::string& path)
+{
+	m_path = path;
 }

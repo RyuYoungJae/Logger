@@ -14,11 +14,15 @@ public:
 	virtual ~LogFile();
 
 public:
+	void CreateDirectories();
 	void Write(const std::string& fmt);
 	int GetSize();
+	bool IsExist();
+	void Close();
+	const std::string& GetFilePath();
+	void ChangeFilePath(const std::string& path);
 
 private:
 	void CreateLogFile();
-	void CreateDirectories();
 	bool IsExistDirectories();
 };

@@ -118,7 +118,9 @@
   <ItemGroup>
     <ClCompile Include="ConsoleChannel.cpp" />
     <ClCompile Include="FileChannel.cpp" />
+    <ClCompile Include="FilePathMaker.cpp" />
     <ClCompile Include="FileSizeStrategy.cpp" />
+    <ClCompile Include="LogArchive.cpp" />
     <ClCompile Include="LogCombiner.cpp" />
     <ClCompile Include="LogContentFormatter.cpp" />
     <ClCompile Include="LogFile.cpp" />
@@ -132,7 +134,9 @@
     <ClInclude Include="ConsoleChannel.h" />
     <ClInclude Include="DefineEnum.h" />
     <ClInclude Include="FileChannel.h" />
+    <ClInclude Include="FilePathMaker.h" />
     <ClInclude Include="IRotateStrategy.h" />
+    <ClInclude Include="LogArchive.h" />
     <ClInclude Include="LogCombiner.h" />
     <ClInclude Include="IFormatter.h" />
     <ClInclude Include="ILogChannel.h" />

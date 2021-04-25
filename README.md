@@ -9,5 +9,6 @@
 * % 값을 기준으로 인자를 대입 하여야한다.
 
 ### 다이어그램
-![Log](https://user-images.githubusercontent.com/70125455/115826290-9ab23100-a445-11eb-9b05-fd983b89f36f.jpg)
+![Log](https://user-images.githubusercontent.com/70125455/115982297-eb0bc900-a5d4-11eb-9a57-f5cc387831f8.jpg)
+
 

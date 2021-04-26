@@ -12,4 +12,9 @@ public:
 	virtual ~FileSizeStrategy() = default;
 
 	bool NeedToRotate(const RotateData& data) const override;
+
+private:
+	void FileOpen();
+	bool NeedToRotate();
+	void Rotate();
 };

@@ -8,8 +8,8 @@
 #include "LogContentFormatter.h"
 #include "FileChannel.h"
 #include "FilePathMaker.h"
-#include "FileSizeStrategy.h"
-#include "TimeStrategy.h"
+#include "SizeRotateStrategy.h"
+#include "TimeRotateStrategy.h"
 #include "RotateData.h"
 #include "LogArchive.h"
 
@@ -22,11 +22,11 @@ int main()
 	logger->RegisterChannel(std::make_unique<ConsoleChannel>());
 
 	auto archive = std::make_unique<LogArchive>(FilePathMaker::Make());
-	archive->RegisterRotateStrategy(std::make_unique<FileSizeStrategy>(10000));
+	archive->RegisterRotateStrategy(std::make_unique<SizeRotateStrategy>(10000));
 
 	std::vector<RotateHHMM> timeRotate;
 	timeRotate.emplace_back(18, 15);
-	archive->RegisterRotateStrategy(std::make_unique<TimeStrategy>(std::move(timeRotate)));
+	archive->RegisterRotateStrategy(std::make_unique<TimeRotateStrategy>(std::move(timeRotate)));
 
 	auto fileLogger = std::make_unique<FileChannel>();
 	fileLogger->RegisterArchive(std::move(archive));

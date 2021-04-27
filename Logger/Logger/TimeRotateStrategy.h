@@ -3,15 +3,15 @@
 #include "RotateData.h"
 #include <vector>
 
-class TimeStrategy : public IRotateStrategy
+class TimeRotateStrategy : public IRotateStrategy
 {
 private:
 	std::vector<RotateHHMM> m_hhmm;
 
 public:
-	TimeStrategy() = delete;
-	TimeStrategy(std::vector<RotateHHMM>&& info);
-	virtual ~TimeStrategy() = default;
+	TimeRotateStrategy() = delete;
+	TimeRotateStrategy(std::vector<RotateHHMM>&& info);
+	virtual ~TimeRotateStrategy() = default;
 
 	bool NeedToRotate(const RotateData& data) const override;
 };

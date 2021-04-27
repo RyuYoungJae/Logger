@@ -1,12 +1,12 @@
 #include "TimeUtil.h"
-#include "TimeStrategy.h"
+#include "TimeRotateStrategy.h"
 
-TimeStrategy::TimeStrategy(std::vector<RotateHHMM>&& info)
+TimeRotateStrategy::TimeRotateStrategy(std::vector<RotateHHMM>&& info)
 	: m_hhmm{ std::move(info) }
 {
 }
 
-bool TimeStrategy::NeedToRotate(const RotateData& data) const
+bool TimeRotateStrategy::NeedToRotate(const RotateData& data) const
 {
 	const auto& fileCreateDate = data.FileCreateDate;
 	if (fileCreateDate.Day <= 0) return false;

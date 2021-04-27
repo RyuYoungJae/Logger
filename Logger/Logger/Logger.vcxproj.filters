@@ -69,16 +69,16 @@
     <ClCompile Include="LogFile.cpp">
       <Filter>소스 파일\Channel\File</Filter>
     </ClCompile>
-    <ClCompile Include="FileSizeStrategy.cpp">
-      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
-    </ClCompile>
     <ClCompile Include="LogArchive.cpp">
       <Filter>소스 파일\Channel\File</Filter>
     </ClCompile>
     <ClCompile Include="FilePathMaker.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="TimeStrategy.cpp">
+    <ClCompile Include="SizeRotateStrategy.cpp">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeRotateStrategy.cpp">
       <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,9 +131,6 @@
     <ClInclude Include="LogFile.h">
       <Filter>소스 파일\Channel\File</Filter>
     </ClInclude>
-    <ClInclude Include="FileSizeStrategy.h">
-      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
-    </ClInclude>
     <ClInclude Include="IRotateStrategy.h">
       <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
     </ClInclude>
@@ -146,7 +143,10 @@
     <ClInclude Include="FilePathMaker.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="TimeStrategy.h">
+    <ClInclude Include="SizeRotateStrategy.h">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeRotateStrategy.h">
       <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
     </ClInclude>
   </ItemGroup>

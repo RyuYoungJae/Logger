@@ -117,10 +117,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleChannel.cpp" />
-    <ClCompile Include="TimeStrategy.cpp" />
+    <ClCompile Include="TimeRotateStrategy.cpp" />
     <ClCompile Include="FileChannel.cpp" />
     <ClCompile Include="FilePathMaker.cpp" />
-    <ClCompile Include="FileSizeStrategy.cpp" />
+    <ClCompile Include="SizeRotateStrategy.cpp" />
     <ClCompile Include="LogArchive.cpp" />
     <ClCompile Include="LogCombiner.cpp" />
     <ClCompile Include="LogContentFormatter.cpp" />
@@ -133,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleChannel.h" />
-    <ClInclude Include="TimeStrategy.h" />
+    <ClInclude Include="TimeRotateStrategy.h" />
     <ClInclude Include="DefineEnum.h" />
     <ClInclude Include="FileChannel.h" />
     <ClInclude Include="FilePathMaker.h" />
@@ -149,7 +149,7 @@
     <ClInclude Include="LogFactor.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LogLevelFormatter.h" />
-    <ClInclude Include="FileSizeStrategy.h" />
+    <ClInclude Include="SizeRotateStrategy.h" />
     <ClInclude Include="RotateData.h" />
     <ClInclude Include="TimeFormatter.h" />
     <ClInclude Include="LDateTime.h" />

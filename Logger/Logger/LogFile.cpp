@@ -1,7 +1,8 @@
 #include <fstream>
+#include "TimeUtil.h"
 #include "LogFile.h"
 
-LogFile::LogFile(const std::string& path) : m_file{ INVALID_HANDLE_VALUE }, m_path{ path }
+LogFile::LogFile(const std::string& path) : m_file{ INVALID_HANDLE_VALUE }, m_path{ path }, m_createDate{}
 {
 }
 
@@ -40,6 +41,8 @@ void LogFile::CreateLogFile()
 
 	m_file = CreateFileA(m_path.c_str(), GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (m_file == INVALID_HANDLE_VALUE) throw std::runtime_error("Exception from file create \n");
+
+	m_createDate = TimeUtil::GetLocalDate();
 }
 
 void LogFile::CreateDirectories()
@@ -79,4 +82,9 @@ const std::string& LogFile::GetFilePath()
 void LogFile::ChangeFilePath(const std::string& path)
 {
 	m_path = path;
+}
+
+LDateTime LogFile::GetCreateDate()
+{
+	return m_createDate;
 }

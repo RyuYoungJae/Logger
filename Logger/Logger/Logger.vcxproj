@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleChannel.cpp" />
+    <ClCompile Include="TimeStrategy.cpp" />
     <ClCompile Include="FileChannel.cpp" />
     <ClCompile Include="FilePathMaker.cpp" />
     <ClCompile Include="FileSizeStrategy.cpp" />
@@ -132,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleChannel.h" />
+    <ClInclude Include="TimeStrategy.h" />
     <ClInclude Include="DefineEnum.h" />
     <ClInclude Include="FileChannel.h" />
     <ClInclude Include="FilePathMaker.h" />

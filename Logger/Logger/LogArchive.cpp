@@ -38,7 +38,7 @@ void LogArchive::FileOpen()
 bool LogArchive::NeedToRotate()
 {
 	RotateData data;
-	data.Time = TimeUtil::GetLocalDate();
+	data.FileCreateDate = m_file->GetCreateDate();
 	data.FileSize = m_file->GetSize();
 
 	for (const auto& strategy : m_roateStrategy)

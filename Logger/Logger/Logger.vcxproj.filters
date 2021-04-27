@@ -78,6 +78,9 @@
     <ClCompile Include="FilePathMaker.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="TimeStrategy.cpp">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DefineEnum.h">
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="FilePathMaker.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeStrategy.h">
+      <Filter>소스 파일\Channel\File\RotateStrategy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

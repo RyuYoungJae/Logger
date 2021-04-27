@@ -24,5 +24,4 @@ public:
 private:
 	void FileOpen();
 	bool NeedToRotate();
-	void Rotate();
 };

@@ -1,12 +1,14 @@
 #pragma once
 #include <string>
 #include <windows.h>
+#include "LDateTime.h"
 
 class LogFile
 {
 private:
 	HANDLE m_file;
 	std::string m_path;
+	LDateTime m_createDate;
 
 public:
 	LogFile() = delete;
@@ -21,6 +23,7 @@ public:
 	void Close();
 	const std::string& GetFilePath();
 	void ChangeFilePath(const std::string& path);
+	LDateTime GetCreateDate();
 
 private:
 	void CreateLogFile();
